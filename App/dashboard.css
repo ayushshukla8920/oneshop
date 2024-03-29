@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    box-sizing: border-box;
+    background-color: #181A1B;
+    color: white;
+}
+h1{
+    margin-left: 30px;
+    padding-top: 35px;
+    color: #f8457b;
+    margin-bottom: 10px;
+}
+.sidebar{
+    background-color: #2e3132;
+    width: 40vh;
+    height: 100vh;
+    border-top-right-radius: 13px;
+    border-bottom-right-radius: 13px;
+}
+h4{
+    margin-left: 30px;
+    padding-top: 35px;
+}

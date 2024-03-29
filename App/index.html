@@ -64,10 +64,8 @@
               console.log(username1);
               console.log(username);
               if(username == username1){
-                console.log('username verified');
                 password1 = data[i].password;
                 if(password1==password){
-                  console.log('Credentials verified');
                   window.location.href = 'dashboard.html';
                 }
                 else{
@@ -89,7 +87,6 @@
           })
           .catch(error => console.error('Error fetching data:', error));
       });
-      
     </script>
 </body>
 </html>
