@@ -18,9 +18,8 @@
       <h1>oneShop</h1>
       <h2>Fast & Toey Product Management</h2>
     </div>
-    <form action="#">
       <div class="form-group">
-        <label for="username" id="lblWelcome">Welcome Back!</label>
+        <h3 id="lblWelcome">Welcome Back!</h3>
       </div><br><br>
       <div class="input-group">
         <div class="form-group">
@@ -36,7 +35,7 @@
         <a href="#" id="fmp">Forget My Password?</a>
       </div>
       <div class="form-group">
-        <button type="submit" id="sign-in">Sign In</button>
+        <button id="sign-in" onclick="validate()">Sign In</button>
       </div>
       <div class="form-group">
         <a href="#" id="reqAcc">Request An Account</a>
@@ -44,19 +43,53 @@
       <div class="form-group">
         <a href="#" id="help">Need Help?</a>
       </div>
-
-    </form>
   </div>
     <script>
-      document.getElementById('getDataButton').addEventListener('click', () => {
+      function validate(){
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+      }
+      document.getElementById('sign-in').addEventListener('click', () => {
         fetch('/data')
           .then(response => response.json())
           .then(data => {
             // Process and display data
-            document.getElementById('output').textContent = JSON.stringify(data);
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var records = JSON.stringify(data);
+            const length = Object.keys(data).length;
+            console.log('Length of JSON object:', length);
+            for(var i=0;i<length;i++){
+              username1 = data[i].name;
+              console.log(username1);
+              console.log(username);
+              if(username == username1){
+                console.log('username verified');
+                password1 = data[i].password;
+                if(password1==password){
+                  console.log('Credentials verified');
+                  window.location.href = 'dashboard.html';
+                }
+                else{
+                  var err = document.getElementById('lblWelcome');
+                  err.innerHTML = 'Invalid Username or Password !!'
+                  err.style.backgroundColor = "rgba(195,7,63,.7)";
+                  err.style.borderRadius = "40px";
+                  err.style.paddingBlock = "5px";
+                }
+              }
+              else{
+                var err = document.getElementById('lblWelcome');
+                err.innerHTML = 'Invalid Username or Password !!'
+                err.style.backgroundColor = "rgba(195,7,63,.7)";
+                err.style.borderRadius = "40px";
+                err.style.paddingBlock = "5px";
+              }
+            }
           })
           .catch(error => console.error('Error fetching data:', error));
       });
+      
     </script>
 </body>
 </html>
