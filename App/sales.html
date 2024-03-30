@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customers</title>
+    <link rel="stylesheet" href="sales.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="main">
+        <div class="sidebar">
+            <h1>OneShop</h1>
+            <h4 id="customer" onclick="redirect(1)">Customers</h4>
+            <h4 id="inventory" onclick="redirect(2)">Inventory</h4>
+            <h4 id="sales" onclick="redirect(3)">Sales</h4>
+            <h4 id="employees" onclick="redirect(4)">Employees</h4>
+            <h4 id="reports" onclick="redirect(5)">Reports & Analytics</h4>
+        </div>
+    </div>
+    <script>
+        function redirect(n){
+            switch(n){
+                case 1:window.location.href = 'dashboard.html';
+                break;
+                case 2:window.location.href = 'inventory.html';
+                break;
+                case 3:window.location.href = 'sales.html';
+                break;
+                case 4:window.location.href = 'employees.html';
+                break;
+                case 5:window.location.href = 'reports.html';
+                break;
+            }
+        }
+        
+    </script>
+</body>
+</html>

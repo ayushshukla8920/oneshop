@@ -3,17 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Customers</title>
     <link rel="stylesheet" href="dashboard.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    <div class="sidebar">
-        <h1>OneShop</h1>
-        <h4>Customers</h4>
-        <h4>Inventory</h4>
-        <h4>Sales</h4>
-        <h4>Employees</h4>
-        <h4>Reports & Analytics</h4>
+    <div class="main">
+        <div class="sidebar">
+            <h1>OneShop</h1>
+            <h4 id="customer" onclick="redirect(1)">Customers</h4>
+            <h4 id="inventory" onclick="redirect(2)">Inventory</h4>
+            <h4 id="sales" onclick="redirect(3)">Sales</h4>
+            <h4 id="employees" onclick="redirect(4)">Employees</h4>
+            <h4 id="reports" onclick="redirect(5)">Reports & Analytics</h4>
+        </div>
+        <div class="mainbar">
+        <div class="customers">
+            <div>
+                <div class="totalcust">
+                    <h1 id="number">X</h1>
+                </div>
+                <h5 id="heading">Total Customers</h5>
+            </div>
+            <div class="perchange">
+                <h4>Change in last 30 Days</h4>
+                <h1 class="arrow"><i class='bx bxs-up-arrow'></i></h1>
+                <h1 id="change">X</h1>
+            </div>
+        </div>
+        <br><br>
+        <h1 style="display: inline-block;">Customer Details </h1>
+        <button id="addcust" onclick="addcust()" style="height: 35px; width: 40px; font-size: 20px; border:1px solid rgb(128, 232, 121); border-radius: 5px; background-color: rgb(128, 232, 121); float: right; margin-top: 30px;"><i class='bx bxs-user-plus'></i></button><hr>
+        <div id="container">
+
+        </div>
     </div>
+    </div>
+    <script>
+        function addcust(){
+            window.location.href = 'addcust.html';
+        }
+        function redirect(n){
+            switch(n){
+                case 1:window.location.href = 'dashboard.html';
+                break;
+                case 2:window.location.href = 'inventory.html';
+                break;
+                case 3:window.location.href = 'sales.html';
+                break;
+                case 4:window.location.href = 'employees.html';
+                break;
+                case 5:window.location.href = 'reports.html';
+                break;
+            }
+        }
+        fetch('/cust')
+          .then(response => response.json())
+          .then(data => {
+            // Process and display data
+            var records = JSON.stringify(data);
+            const length = Object.keys(data).length;
+            console.log('Length of JSON object:', length);
+            document.getElementById('number').innerHTML = length;
+            const now = new Date();
+            var date = now.getDate();
+            var month = now.getMonth();
+            var year = now.getFullYear();
+            var days = (year*365)+(month*30)+date;
+            console.log(days);
+            var count=0;
+            for(var i=0;i<length;i++){
+                var dor_year = data[i].DateOfRegistration.slice(0,4);
+                var dor_month = data[i].DateOfRegistration.slice(6,7);
+                var dor_day = data[i].DateOfRegistration.slice(9,10);
+                var dor = (parseInt(dor_year)*365)+(parseInt(dor_month)*30)+parseInt(dor_day);
+                var diff = days-dor;
+                if(diff<0){
+                    count++;
+                }
+                var paragraph = document.createElement('p');
+                var text = data[i].CustomerID+".    "+data[i].Name+"      "+data[i].ContactNumber+"     "+data[i].Email+"      "+data[i].DateOfRegistration.slice(0,10);
+                paragraph.textContent = text;
+                paragraph.style.marginTop = "20px";
+                paragraph.style.marginLeft = "20px";
+                paragraph.style.backgroundColor = '#323739';
+                paragraph.style.borderRadius = '20px';
+                paragraph.style.padding = '10px';
+                paragraph.setAttribute('class', 'emp');
+                var container = document.getElementById('container');
+                container.appendChild(paragraph);
+            }
+            document.getElementById('change').innerHTML = "+"+count;
+            })
+          .catch(error => console.error('Error fetching data:', error));
+    </script>
 </body>
 </html>

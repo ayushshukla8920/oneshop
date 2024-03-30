@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -8,17 +7,10 @@ body{
     background-color: #181A1B;
     color: white;
 }
-p{
-    font-family: "Source Code Pro";
-    font-size: 10px;
-}
-.sidebar h1{
-    color: #f8457b;
-}
 h1{
     margin-left: 30px;
-    padding-top: 32px;
-    color: #ffffff;
+    padding-top: 35px;
+    color: #f8457b;
     margin-bottom: 10px;
 }
 .sidebar{
@@ -28,11 +20,6 @@ h1{
     border-top-right-radius: 13px;
     border-bottom-right-radius: 13px;
     padding-right: 10px;
-    position: fixed;
-}
-.mainbar{
-    margin-left: 50vh;
-    margin-bottom: 10vh;
 }
 h4{
     margin-left: 20px;
@@ -41,14 +28,9 @@ h4{
     padding-top: 5px;
     padding-bottom: 5px;
 }
-#customer{
+#inventory{
     background-color: rgba(255,255,255,0.2);
     border-radius: 100px;
-}
-#heading{
-    margin-left: 72px;
-    margin-top: 5px;
-    font-size: 15px;
 }
 .main{
     display: flex;
@@ -57,30 +39,28 @@ h4{
     display: flex;
 }
 .totalcust{
-    height: 20vh;
-    width: 20vh;
-    background-color: #181A1B;
-    margin-top: 30px;
-    margin-left: 60px;
-    border-radius: 3000px;
-    border: 20px solid #b337e9;
-}
-.perchange{
-    height: 28vh;
-    width: 56vh;
-    background-color: #181A1B;
+    height: 30vh;
+    width: 60vh;
+    background-color: rgba(136, 135, 135, 0.2);
     margin-top: 30px;
     margin-left: 60px;
     border-radius: 30px;
-    border: 10px solid rgb(255, 180, 81);
+    border: 1px solid grey;
+}
+.perchange{
+    height: 30vh;
+    width: 60vh;
+    background-color: rgba(136, 135, 135, 0.2);
+    margin-top: 30px;
+    margin-left: 60px;
+    border-radius: 30px;
+    border: 1px solid grey;
 }
 .perchange h1{
-    color: rgb(52, 184, 43);
+    color: rgb(61, 255, 47);
     float: right;
-    display: inline-block;
-}
-.arrow{
     margin-right: 20px;
+    display: inline-block;
 }
 .perchange h4{
     margin-top: 20px;
@@ -88,7 +68,4 @@ h4{
 }
 .sidebar h4:hover{
     cursor: pointer;;
-}
-#addcust:active{
-    transform: scale(.95);
 }

@@ -115,7 +115,8 @@ body {
 #sign-in{
   color: white;
   background-color: #f8457b;
-  border-radius: 80px;
+  border-radius: 5px;
+  font-size: 15px;
 }
 #username, #password{
     width: 210px;
@@ -146,12 +147,12 @@ input{
   left: 25px;
   top: 10px;
   pointer-events: none;
-  transition: .15s ease-out;
+  transition: .25s ease-out;
 }
 input:focus + .placeholder1{
   top: -8px;
   left: 27px;
-  transition: .15s ease-in;
+  transition: .25s ease-in;
   opacity: 100%;
   background-color: #181A1B;
 }
@@ -165,12 +166,12 @@ input:focus + .placeholder1{
   left: 25px;
   top: 58px;
   pointer-events: none;
-  transition: .15s ease-out;
+  transition: .25s ease-out;
 }
 input:focus + .placeholder2{
   top: 40px;
   left: 27px;
-  transition: .15s ease-in;
+  transition: .25s ease-in;
   opacity: 100%;
   background-color: #181A1B;
 }

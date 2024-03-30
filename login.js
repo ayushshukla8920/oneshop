@@ -29,6 +29,17 @@ app.get('/data', (req, res) => {
   });
 });
 
+app.get('/cust', (req, res) => {
+  con.query('SELECT * FROM customers', (error, results, fields) => {
+    if (error) {
+      console.error('Error querying database:', error);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    res.json(results);
+  });
+});
+
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
